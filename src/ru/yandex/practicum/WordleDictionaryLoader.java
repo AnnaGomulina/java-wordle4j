@@ -11,16 +11,18 @@ import java.util.List;
  */
 public class WordleDictionaryLoader {
     private File logFile;
-    public WordleDictionaryLoader(File logFile){
+
+    public WordleDictionaryLoader(File logFile) {
         this.logFile = logFile;
     }
+
     public WordleDictionary load(File file) throws IOException {
-        try(FileReader fileReader = new FileReader(file)) {
+        try (FileReader fileReader = new FileReader(file)) {
             ArrayList<String> goodWords = new ArrayList<>();
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             List<String> words = bufferedReader.lines().toList();
             for (String word : words) {
-                if (word.length() != 5 || word.contains("-")){
+                if (word.length() != 5 || word.contains("-")) {
                     continue;
                 }
                 word = word.replace('ё', 'е');
@@ -29,6 +31,6 @@ public class WordleDictionaryLoader {
             return new WordleDictionary(goodWords, logFile);
         }
 
-   }
+    }
 }
 

@@ -25,14 +25,14 @@ public class WordleDictionary {
         this.logFile = logFile;
     }
 
-    public String getRandomWord(){
+    public String getRandomWord() {
         Random random = new Random();
         int index = random.nextInt(words.size());
         return words.get(index);
     }
 
-    public void isValid(String word) throws WordNotFoundInDictionary{
-        if (words.contains(word)){
+    public void isValid(String word) throws WordNotFoundInDictionary {
+        if (words.contains(word)) {
 
         } else {
             throw new WordNotFoundInDictionary("Слова нет в словаре!");
