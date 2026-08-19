@@ -56,7 +56,7 @@ public class WordleGame {
         }
     }
 
-    public String tip(){
+    public String tip() {
         for (String candidate : dictionary.getWords()) {
             boolean isOk = true;
             for (int index = 0; index < candidate.length(); index++) {
@@ -85,28 +85,28 @@ public class WordleGame {
 
     public String checkWord(String selectedWord) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
-        for(int index = 0; index < answer.length(); index++){
+        for (int index = 0; index < answer.length(); index++) {
             char charAnswer = answer.charAt(index);
             char charSelectedWord = selectedWord.charAt(index);
-            if(charAnswer == charSelectedWord){
+            if (charAnswer == charSelectedWord) {
                 stringBuilder.append("+");
-            } else if(answer.contains(String.valueOf(charSelectedWord))){
+            } else if (answer.contains(String.valueOf(charSelectedWord))) {
                 stringBuilder.append("^");
             } else {
                 stringBuilder.append("-");
             }
         }
         String result = stringBuilder.toString();
-        steps-=1;
+        steps -= 1;
         addResult(result, selectedWord);
-        try(Writer fileWriter = new FileWriter(logFile, true)) {
+        try (Writer fileWriter = new FileWriter(logFile, true)) {
             fileWriter.write(String.format("Пользователь ввел слово: %s \n", selectedWord));
             return result;
         }
     }
 
     private void addResult(String result, String selectedWord) {
-        for(int index = 0; index < selectedWord.length(); index++){
+        for (int index = 0; index < selectedWord.length(); index++) {
             char charSelectedWord = selectedWord.charAt(index);
             if (result.charAt(index) == '+') {
                 listLinkedHashMap.put(charSelectedWord, List.of(index));
@@ -121,8 +121,8 @@ public class WordleGame {
         }
     }
 
-    public boolean isWinner(String selectedWord){
-        if(answer.equals(selectedWord)){
+    public boolean isWinner(String selectedWord) {
+        if (answer.equals(selectedWord)) {
             return true;
         } else {
             return false;
