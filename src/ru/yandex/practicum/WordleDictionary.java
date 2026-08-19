@@ -1,7 +1,6 @@
 package ru.yandex.practicum;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -32,9 +31,7 @@ public class WordleDictionary {
     }
 
     public void isValid(String word) throws WordNotFoundInDictionary {
-        if (words.contains(word)) {
-
-        } else {
+        if (!words.contains(word)) {
             throw new WordNotFoundInDictionary("Слова нет в словаре!");
         }
     }
