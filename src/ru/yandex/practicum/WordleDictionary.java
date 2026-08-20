@@ -32,7 +32,7 @@ public class WordleDictionary {
 
     public void isValid(String word) throws WordNotFoundInDictionary {
         if (!words.contains(word)) {
-            throw new WordNotFoundInDictionary("Слова нет в словаре!");
+            throw new WordNotFoundInDictionary(String.format("Слова %s нет в словаре!", word));
         }
     }
 }
